@@ -4,7 +4,7 @@ services:
   fluentd:
     image: xiaojun207/fluentd-es:v1.11.1
     volumes:
-      - ./fluentd/conf:/fluentd/etc
+      - ./conf:/fluentd/etc
     links:
       - "elasticsearch"
     ports:
