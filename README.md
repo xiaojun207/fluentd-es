@@ -4,7 +4,7 @@ fluentd with elasticsearch plugin(fluent-plugin-elasticsearch)
 
 ## build
 ```
-    docker build -t xiaojun207/fluentd-es:v1.11.2 .
+    docker build -t xiaojun207/fluentd-es:v1.11.3 .
 ```
 
 ## start
@@ -12,7 +12,7 @@ fluentd with elasticsearch plugin(fluent-plugin-elasticsearch)
     docker run -d --name fluentd -p "24224:24224" -p "24224:24224/udp"\
  -v `pwd`/conf:/fluentd/etc\
  -v `pwd`/logs:/tmp/logs\
- xiaojun207/fluentd-es:v1.11.2
+ xiaojun207/fluentd-es:v1.11.3
 ```
 
 ## docker-compose
