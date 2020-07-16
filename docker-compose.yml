@@ -2,7 +2,7 @@ version: '2'
 services:
 
   fluentd:
-    image: xiaojun207/fluentd-es:v1.11.1
+    image: xiaojun207/fluentd-es:v1.11.2
     container_name: fluentd
     volumes:
       - ./conf:/fluentd/etc

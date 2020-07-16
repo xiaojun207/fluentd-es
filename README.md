@@ -1,10 +1,18 @@
 # fluentd-es
 fluentd with elasticsearch plugin(fluent-plugin-elasticsearch)
-
+> 增加java 的log4j的多行日志插件支持
 
 ## build
 ```
-    docker build -t xiaojun207/fluentd-es:v1.11.1 .
+    docker build -t xiaojun207/fluentd-es:v1.11.2 .
+```
+
+## start
+```
+    docker run -d --name fluentd -p "24224:24224" -p "24224:24224/udp"\
+ -v `pwd`/conf:/fluentd/etc\
+ -v `pwd`/logs:/tmp/logs\
+ xiaojun207/fluentd-es:v1.11.2
 ```
 
 ## docker-compose

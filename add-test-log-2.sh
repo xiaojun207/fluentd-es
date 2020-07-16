@@ -1,0 +1,4 @@
+for i in $(seq 1 9);do
+  echo "2020-07-16 21:0${i}:15,076 ERROR com.g.job.TestJob 29 error.trace" >> logs/common-info.log;
+  sleep 1;
+done;
