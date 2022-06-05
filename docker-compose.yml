@@ -2,7 +2,7 @@ version: '2'
 services:
 
   fluentd:
-    image: xiaojun207/fluentd-es:v1.12.2
+    image: xiaojun207/fluentd-es:latest
     container_name: fluentd
     volumes:
       - ./conf:/fluentd/etc
@@ -23,6 +23,8 @@ services:
     environment:
       - discovery.type=single-node
     container_name: elasticsearch
+    volumes:
+      - ./es/data:/usr/share/elasticsearch/data
     hostname: elasticsearch
     ports:
       - "9200:9200"

@@ -4,14 +4,14 @@ fluentd with elasticsearch plugin(fluent-plugin-elasticsearch)
 
 ## build
 ```
-    docker build -t xiaojun207/fluentd-es:v1.11.4 .
+    docker build -t xiaojun207/fluentd-es:v1.14.1 .
 ```
 
 ## start
 ```
     docker run -d --name fluentd -p "24224:24224" -p "24224:24224/udp"\
  -v `pwd`/logs:/tmp/logs\
- xiaojun207/fluentd-es:v1.11.4
+ xiaojun207/fluentd-es:v1.14.1
 
 
 //  -v `pwd`/conf:/fluentd/etc\ 容器中，默认包含了配置，大家需要自行配置的。可以自己做映射

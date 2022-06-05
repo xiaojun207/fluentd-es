@@ -1,7 +1,13 @@
-docker stop fluentd
-docker rm fluentd
+containerName="fluentd"
 
-docker run -d --name fluentd --add-host=elasticsearch:192.168.3.32 -p "24224:24224" -p "24224:24224/udp"\
- -v `pwd`/logs:/tmp/logs\
+docker ps -aq --filter "name=${containerName}" | grep -q . && docker stop ${containerName} && docker rm -fv ${containerName}
+
+
+
+docker run -d --name ${containerName} -p "24224:24224" -p "24224:24224/udp"\
  -v `pwd`/conf:/fluentd/etc\
- xiaojun207/fluentd-es:v1.11.4
+ -v `pwd`/logs:/fluentd/log\
+ xiaojun207/fluentd-es:latest
+
+
+# docker run -d --name ${containerName} -p 24224:24224 -p 24224:24224/udp -u fluent -v `pwd`/fluentd/:/fluentd/log fluentd

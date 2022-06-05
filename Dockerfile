@@ -1,10 +1,24 @@
-FROM fluent/fluentd:v1.13-1
+FROM fluent/fluentd:v1.14-1
 
-ADD ./conf/fluent.conf /fluentd/etc/
-
+# Use root account to use apk
 USER root
-RUN ["gem", "install", "fluent-plugin-elasticsearch", "--version", "5.0.3"]
-RUN ["gem", "install", "fluent-plugin-grep"]
-RUN ["gem", "install", "fluent-plugin-concat", "--version", "2.1.0"]
-RUN ["gem", "install", "fluent-plugin-tail-multiline"]
+
+# you may customize including plugins as you wish
+RUN apk add --no-cache --update --virtual .build-deps \
+        sudo build-base ruby-dev \
+ && sudo gem install fluent-plugin-elasticsearch \
+ && sudo gem install fluent-plugin-grep \
+ && sudo gem install fluent-plugin-concat \
+ && sudo gem install fluent-plugin-tail-multiline \
+ && sudo gem install fluent-plugin-detect-exceptions \
+ && sudo gem sources --clear-all \
+ && apk del .build-deps \
+ && rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
+
+
+COPY ./conf/fluent.conf /fluentd/etc/
+#COPY entrypoint.sh /bin/
+
+USER fluent
+
 
