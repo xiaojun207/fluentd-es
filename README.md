@@ -4,7 +4,10 @@ fluentd with elasticsearch plugin(fluent-plugin-elasticsearch)
 
 ## build
 ```
-    docker build -t xiaojun207/fluentd-es:v1.14.1 .
+    docker build -t xiaojun207/fluentd-es:v1.15 .
+    docker tag xiaojun207/fluentd-es:v1.15 xiaojun207/fluentd-es:latest
+    docker push xiaojun207/fluentd-es:v1.15
+    docker push xiaojun207/fluentd-es:latest
 ```
 
 ## start

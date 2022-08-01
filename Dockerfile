@@ -1,4 +1,4 @@
-FROM fluent/fluentd:v1.14-1
+FROM fluent/fluentd:v1.15
 
 # Use root account to use apk
 USER root
@@ -6,7 +6,7 @@ USER root
 # you may customize including plugins as you wish
 RUN apk add --no-cache --update --virtual .build-deps \
         sudo build-base ruby-dev \
- && sudo gem install fluent-plugin-elasticsearch \
+ && sudo gem install fluent-plugin-elasticsearch --no-document\
  && sudo gem install fluent-plugin-grep \
  && sudo gem install fluent-plugin-concat \
  && sudo gem install fluent-plugin-tail-multiline \
